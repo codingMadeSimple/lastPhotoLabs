@@ -3,6 +3,9 @@ import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 import PhotoList from 'components/PhotoList';
+import TopicListItem from 'components/TopicListItem';
+import TopicList from 'components/TopicList';
+import TopNavigation from 'components/TopNavigationBar';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -19,12 +22,15 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <PhotoList sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
+      <TopNavigation/>
 
     </div>
   );
 };
 
 export default App;
+{/* <TopicList/> */}
+
+{/* <PhotoList sampleDataForPhotoListItem={sampleDataForPhotoListItem}/> */}
 
 {/* <PhotoListItem sampleDataForPhotoListItem={sampleDataForPhotoListItem}/> */}
