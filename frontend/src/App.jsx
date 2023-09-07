@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute modal={modal} setModal={setModal}/>
-      {modal && <PhotoDetailsModal/>}
+      {modal && <PhotoDetailsModal setModal={setModal}/>}
     </div>
   );
 };
