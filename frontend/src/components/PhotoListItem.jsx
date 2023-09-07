@@ -17,9 +17,9 @@ const handleClick = () =>{
 }
 
   return (
-    <div className="photo-list__item" onClick={handleClick}>
+    <div className="photo-list__item" >
       <PhotoFavButton favorite={props.favorite} setFavorite={props.setFavorite} id={props.id}/>
-      <img src={props.imageSource} className="photo-list__image" />
+      <img src={props.imageSource} className="photo-list__image" onClick={handleClick}/>
       <div className="photo-list__user-details">
         <img src={props.profile} className="photo-list__user-profile" />
         <div className="photo-list__user-info ">

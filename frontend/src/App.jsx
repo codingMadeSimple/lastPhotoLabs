@@ -8,7 +8,7 @@ import { useState } from 'react';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [modal, setModal] = useState(false)
-  // console.log(modal)
+
   return (
     <div className="App">
       <HomeRoute modal={modal} setModal={setModal}/>
