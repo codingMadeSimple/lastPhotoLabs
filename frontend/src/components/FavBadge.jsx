@@ -12,3 +12,5 @@ const FavBadge = ({ isFavPhotoExist }) => {
 };
 
 export default FavBadge;
+
+//For FavIcon, I added selected to make the icon filled.
