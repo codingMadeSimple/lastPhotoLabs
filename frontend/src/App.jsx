@@ -6,6 +6,7 @@ import PhotoList from 'components/PhotoList';
 import TopicListItem from 'components/TopicListItem';
 import TopicList from 'components/TopicList';
 import TopNavigation from 'components/TopNavigationBar';
+import HomeRoute from 'routes/HomeRoute';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -22,13 +23,15 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <TopNavigation/>
+      <HomeRoute sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
 
     </div>
   );
 };
 
 export default App;
+{/* <TopNavigation/> */}
+
 {/* <TopicList/> */}
 
 {/* <PhotoList sampleDataForPhotoListItem={sampleDataForPhotoListItem}/> */}
