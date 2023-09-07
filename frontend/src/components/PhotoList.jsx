@@ -2,6 +2,7 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
+import photos from "mocks/photos";
 
 const sampleDataForPhotoList = [
   {
@@ -59,13 +60,22 @@ const sampleDataForPhotoList = [
 
 const PhotoList = (props) => {
 
-const sampleDataForPhotoListItem = props.sampleDataForPhotoListItem
+  const photos=sampleDataForPhotoList
 
+const PhotoArray = photos.map((photo)=> {
+  return <PhotoListItem 
+  key={photo.id}
+  username={photo.user.username}
+  imageSource={photo.urls.regular}
+  id = {photo.user.id}
+  location = {photo.location.city + " " + photo.location.country} 
+  profile= {photo.user.profile}
+  />
+})
+  
   return (
     <ul className="photo-list">
-      <PhotoListItem sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
-      <PhotoListItem sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
-      <PhotoListItem sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
+{PhotoArray}
     </ul>
   );
 };

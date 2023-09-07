@@ -9,7 +9,6 @@ const sampleDataForTopicListItem = {
 };
 
 const TopicListItem = (props) => {
-  console.log(props)
   const id = sampleDataForTopicListItem.id
   const slug = sampleDataForTopicListItem.slug
   const label = sampleDataForTopicListItem.label
