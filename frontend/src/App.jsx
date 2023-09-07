@@ -2,24 +2,17 @@ import React from 'react';
 import './App.scss';
 
 import HomeRoute from 'routes/HomeRoute';
-
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import { useState } from 'react';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  const [modal, setModal] = useState(false)
+  // console.log(modal)
   return (
     <div className="App">
-      <HomeRoute sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
-
+      <HomeRoute modal={modal} setModal={setModal}/>
+      {modal && <PhotoDetailsModal/>}
     </div>
   );
 };
