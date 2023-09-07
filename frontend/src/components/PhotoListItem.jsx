@@ -10,7 +10,7 @@ const PhotoListItem = (props) => {
 
   return (
     <div className="photo-list__item">
-      <PhotoFavButton/>
+      <PhotoFavButton favorite={props.favorite} setFavorite={props.setFavorite} id={props.id}/>
       <img src={props.imageSource} className="photo-list__image" />
       <div className="photo-list__user-details">
         <img src={props.profile} className="photo-list__user-profile" />
@@ -19,7 +19,6 @@ const PhotoListItem = (props) => {
           <div className="photo-list__user-location">{props.location}</div>
         </div>
       </div>
-
     </div>
   );
 };

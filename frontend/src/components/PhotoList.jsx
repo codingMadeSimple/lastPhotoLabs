@@ -60,20 +60,22 @@ const sampleDataForPhotoList = [
 
 const PhotoList = (props) => {
 
-const PhotoArray = props.photos.map((photo)=> {
-  return <PhotoListItem 
-  key={photo.id}
-  username={photo.user.username}
-  imageSource={photo.urls.regular}
-  id = {photo.user.id}
-  location = {photo.location.city + " " + photo.location.country} 
-  profile= {photo.user.profile}
-  />
-})
-  
+  const PhotoArray = props.photos.map((photo) => {
+    return <PhotoListItem
+      key={photo.id}
+      username={photo.user.username}
+      imageSource={photo.urls.regular}
+      id={photo.user.id}
+      location={photo.location.city + " " + photo.location.country}
+      profile={photo.user.profile}
+      favorite={props.favorite} 
+      setFavorite={props.setFavorite}
+    />;
+  });
+
   return (
     <ul className="photo-list">
-{PhotoArray}
+      {PhotoArray}
     </ul>
   );
 };

@@ -5,14 +5,17 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
-
+import { useState } from 'react';
 
 
 const HomeRoute = (props) => {
+
+  const [favorite, setFavorite] = useState([]);
+
   return (
     <div className="home-route">
       <TopNavigation topics={topics}/>
-      <PhotoList photos={photos} sampleDataForPhotoListItem={props.sampleDataForPhotoListItem}/>
+      <PhotoList photos={photos}  favorite={favorite} setFavorite={setFavorite}/>
     </div>
   );
 };
