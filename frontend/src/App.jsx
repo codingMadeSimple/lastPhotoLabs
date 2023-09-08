@@ -7,8 +7,11 @@ import { useState } from 'react';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  
+  //Modal state
   const [modal, setModal] = useState(false)
-  const [select, setSelect] = useState({})
+  //Selecting a photo state
+  const [select, setSelect] = useState(null)
 
   return (
     <div className="App">

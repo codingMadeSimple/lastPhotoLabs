@@ -2,9 +2,11 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
+
 
 const PhotoList = (props) => {
+
+  console.log(props)
 
   const PhotoArray = props.photos.map((photo) => {
     return <PhotoListItem
@@ -22,6 +24,7 @@ const PhotoList = (props) => {
       setModal={props.setModal}
       select ={props.select} 
       setSelect={props.setSelect}
+      photo={photo}
     />;
   });
 
