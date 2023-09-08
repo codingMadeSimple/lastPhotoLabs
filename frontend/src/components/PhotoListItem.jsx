@@ -11,11 +11,19 @@ const PhotoListItem = (props) => {
 // console.log(props)
 
 const handleClick = () =>{
-
   props.setModal(true)
 
+  props.setSelect({
+    key:props.id,
+    username : props.username,
+    imageSource : props.imageSource,
+    fullPhoto : props.fullPhoto,
+    similarPhotos : props.similarPhotos,
+    id : props.id,
+    location : props.location.city + " " + props.location.country,
+    profile : props.profile
+  })
 }
-
   return (
     <div className="photo-list__item" >
       <PhotoFavButton favorite={props.favorite} setFavorite={props.setFavorite} id={props.id}/>
