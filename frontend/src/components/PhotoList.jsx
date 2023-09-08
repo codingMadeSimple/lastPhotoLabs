@@ -6,7 +6,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
 
-  console.log(props)
+  // console.log(props)
 
   const PhotoArray = props.photos.map((photo) => {
     return <PhotoListItem

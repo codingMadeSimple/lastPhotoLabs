@@ -10,17 +10,15 @@ import { useState } from 'react';
 
 const HomeRoute = (props) => {
 
-  const [favorite, setFavorite] = useState([]);
-
   return (
     <div className="home-route">
       <TopNavigation 
       topics={topics} 
-      favorite={favorite}/>
+      favorite={props.favorite}/>
       <PhotoList 
       photos={photos} 
-      favorite={favorite} 
-      setFavorite={setFavorite} 
+      favorite={props.favorite} 
+      setFavorite={props.setFavorite} 
       modal={props.modal} 
       setModal={props.setModal} 
       select ={props.select} 

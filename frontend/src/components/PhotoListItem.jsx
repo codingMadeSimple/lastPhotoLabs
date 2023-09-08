@@ -9,7 +9,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
 
-
+// console.log(props)
 const handleClick = () =>{
   const photo=props.photo
   props.setModal(true)

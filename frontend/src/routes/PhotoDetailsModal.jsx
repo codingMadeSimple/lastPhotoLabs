@@ -5,7 +5,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-
+console.log(props)
   //This will make the data from similar phots which is an object of objects and format it so that it can be used again with the PhotoList component
   const photos = Object.values(props.select[0].similar_photos)
 
@@ -19,7 +19,7 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" onClick={exitModal}/>
       </button>
       <img className="photo-details-modal__image" src={props.select[0].urls.full} />
-      <PhotoList photos={photos}/>
+      <PhotoList photos={photos} favorite={props.favorite} setFavorite={props.setFavorite}/>
     </div>
   )
 };

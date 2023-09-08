@@ -7,11 +7,13 @@ import { useState } from 'react';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  
+
   //Modal state
   const [modal, setModal] = useState(false)
   //Selecting a photo state
   const [select, setSelect] = useState(null)
+  //Selecting favorite button
+  const [favorite, setFavorite] = useState([]);
 
   return (
     <div className="App">
@@ -20,8 +22,15 @@ const App = () => {
       setModal={setModal} 
       select ={select} 
       setSelect={setSelect}
+      favorite={favorite}
+      setFavorite={setFavorite}
       />
-      {modal && <PhotoDetailsModal setModal={setModal} select ={select}/>}
+      {modal && <PhotoDetailsModal 
+      setModal={setModal} 
+      select ={select}
+      favorite={favorite}
+      setFavorite={setFavorite}
+      />}
     </div>
   );
 };

@@ -4,12 +4,9 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-
-  const [like, setLike] = useState(false);
+// console.log(props)
 
   const handleClick = () => {
-    //Changes color of icon
-    setLike((prev) => !prev);
 
     //This will ad the id of the favorited photo to the photo array state
     props.setFavorite((prev) => {
@@ -27,10 +24,11 @@ function PhotoFavButton(props) {
   return (
     <div onClick={handleClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={like} />
+        <FavIcon selected={props.favorite.includes(props.id)} />
       </div>
     </div>
   );
 }
 
 export default PhotoFavButton;
+
