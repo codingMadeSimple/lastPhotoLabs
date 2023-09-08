@@ -18,7 +18,7 @@ const App = () => {
       select ={select} 
       setSelect={setSelect}
       />
-      {modal && <PhotoDetailsModal setModal={setModal}/>}
+      {modal && <PhotoDetailsModal setModal={setModal} select ={select}/>}
     </div>
   );
 };
