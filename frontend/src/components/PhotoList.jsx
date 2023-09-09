@@ -19,7 +19,8 @@ const PhotoList = (props) => {
       location={photo.location.city + " " + photo.location.country}
       profile={photo.user.profile}
       favorite={props.favorite} 
-      setFavorite={props.setFavorite}
+      addFavorite={props.addFavorite}
+      removeFavorite={props.removeFavorite}
       modal={props.modal}
       setModal={props.setModal}
       select ={props.select} 

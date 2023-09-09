@@ -4,21 +4,16 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-// console.log(props)
+
 
   const handleClick = () => {
 
-    //This will ad the id of the favorited photo to the photo array state
-    props.setFavorite((prev) => {
-      const favoritesArray = [...prev];
-      if (favoritesArray.includes(props.id)) {
-        const index = favoritesArray.indexOf(props.id);
-        favoritesArray.splice(index, 1);
-      } else {
-        favoritesArray.push(props.id);
-      }
-      return favoritesArray;
-    });
+    if (!props.favorite.includes(props.id)) {
+      props.addFavorite(props.id);
+    } else {
+      props.removeFavorite(props.id);
+    }
+
   };
 
   return (
@@ -32,3 +27,16 @@ function PhotoFavButton(props) {
 
 export default PhotoFavButton;
 
+
+// This was the old addFavorite state
+
+// props.addFavorite((prev) => {
+//   const favoritesArray = [...prev];
+//   if (favoritesArray.includes(props.id)) {
+//     const index = favoritesArray.indexOf(props.id);
+//     favoritesArray.splice(index, 1);
+//   } else {
+//     favoritesArray.push(props.id);
+//   }
+//   return favoritesArray;
+// });

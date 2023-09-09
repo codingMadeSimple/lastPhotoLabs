@@ -10,6 +10,8 @@ import { useState } from 'react';
 
 const HomeRoute = (props) => {
 
+  // console.log(props)
+
   return (
     <div className="home-route">
       <TopNavigation 
@@ -18,11 +20,12 @@ const HomeRoute = (props) => {
       <PhotoList 
       photos={photos} 
       favorite={props.favorite} 
-      setFavorite={props.setFavorite} 
+      addFavorite={props.addFavorite} 
       modal={props.modal} 
       setModal={props.setModal} 
       select ={props.select} 
       setSelect={props.setSelect}
+      removeFavorite={props.removeFavorite}
       />
     </div>
   );
