@@ -7,6 +7,7 @@ import PhotoListItem from "./PhotoListItem";
 const PhotoList = (props) => {
 
   // console.log(props)
+  // const showTopicPhotos = props.setTopic(props.topic)
 
   const PhotoArray = props.photos.map((photo) => {
     return <PhotoListItem

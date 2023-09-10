@@ -14,7 +14,6 @@ const handleClick = () =>{
   const photo=props.photo
   props.setModal(true)
   props.setSelect([photo])
-  // console.log("does this single prop show up", props.photo)
 }
 
   return (

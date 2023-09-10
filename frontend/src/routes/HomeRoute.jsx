@@ -15,7 +15,9 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigation 
       topics={props.topics} 
-      favorite={props.favorite}/>
+      favorite={props.favorite}
+      setTopic={props.setTopic}
+      />
       <PhotoList 
       photos={props.photos} 
       favorite={props.favorite} 
@@ -25,6 +27,8 @@ const HomeRoute = (props) => {
       select ={props.select} 
       setSelect={props.setSelect}
       removeFavorite={props.removeFavorite}
+      topic={props.topic}
+      setTopic={props.setTopic}
       />
     </div>
   );

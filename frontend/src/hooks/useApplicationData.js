@@ -11,7 +11,8 @@ export const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   OPEN_MODAL: 'OPEN_MODAL',
-  CLOSE_MODAL: 'CLOSE_MODAL'
+  CLOSE_MODAL: 'CLOSE_MODAL',
+  GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC'
 };
 
 
@@ -32,11 +33,11 @@ function reducer(state, action) {
       }
       return { ...state, favorite: newArray };
 
-    // case ACTIONS.SET_PHOTO_DATA:
-    //   return {state};
+    case ACTIONS.SET_PHOTO_DATA:
+      return { ...state, photoData: action.payload };
 
-    // case ACTIONS.SET_TOPIC_DATA:
-    //   return {state};
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
 
     case ACTIONS.SELECT_PHOTO:
       return { ...state, select: action.payload.select };
@@ -44,13 +45,16 @@ function reducer(state, action) {
     // case ACTIONS.DISPLAY_PHOTO_DETAILS:
     //   return {state};
 
+    case ACTIONS.GET_PHOTOS_BY_TOPIC:
+      return { ...state, topic: action.payload.id };
+
     case ACTIONS.OPEN_MODAL:
       return { ...state, modal: true };
 
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false };
 
-      
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -58,47 +62,86 @@ function reducer(state, action) {
   }
 }
 
-  export default function useApplicationData() {
 
-    const [state, dispatch] = useReducer(reducer, {
-      modal: false,
-      select: null,
-      favorite: [],
-      photos, 
-      topics
-    });
 
-    // console.log(state);
+export default function useApplicationData() {
 
-    const addFavorite = (id) => {
-      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: id } });
-    };
+  const [state, dispatch] = useReducer(reducer, {
+    modal: false,
+    select: null,
+    favorite: [],
+    photoData: [],
+    topicData: [],
+    topic: null
+  });
 
-    const removeFavorite = (id) => {
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: id } });
-    };
+  // console.log(state);
 
-    const setSelect = (select) => {
-      dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { select: select } });
-    };
+  const addFavorite = (id) => {
+    dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: id } });
+  };
 
-    const setModal = () => {
-      dispatch({ type: ACTIONS.OPEN_MODAL });
-    };
+  const removeFavorite = (id) => {
+    dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: id } });
+  };
 
-    const exitModal = () => {
-      dispatch({ type: ACTIONS.CLOSE_MODAL });
-    };
+  const setSelect = (select) => {
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { select: select } });
+  };
 
-    return (
-      //Outputs the state object and the functions to change the states
-      {
-        state,
-        addFavorite,
-        removeFavorite,
-        setModal,
-        exitModal,
-        setSelect
-      }
-    );
-  }
+  const setModal = () => {
+    dispatch({ type: ACTIONS.OPEN_MODAL });
+  };
+
+  const exitModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
+  };
+
+  const setTopic = (topic_id) => {
+    return fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+    .then(res=>res.json())
+    .then((data)=>{
+      console.log(data)
+      dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data });
+  }).catch((error) => {
+    console.error("Error while fetching the topic ID data:", error);
+  });
+};
+
+  //API route for fetching photos from database
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+      .then(res => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((error) => {
+        console.error("Error while fetching the photo data:", error);
+      });
+    //API route for fetching photos from database
+    fetch('http://localhost:8001/api/topics')
+      .then(res => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch((error) => {
+        console.error("Error while fetching the topic data:", error);
+      })
+      
+  }, []);
+  //API route for fetching photos with a specific topic
+  // useEffect(() => {
+  //   fetch('http://localhost:8001/api/topics/photos/:topic_id')
+  //     .then(res => res.json())
+  //     .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
+  // }, []);
+
+  return (
+    //Outputs the state object and the functions to change the states
+    {
+      state,
+      addFavorite,
+      removeFavorite,
+      setModal,
+      exitModal,
+      setSelect,
+      setTopic
+    }
+  );
+}

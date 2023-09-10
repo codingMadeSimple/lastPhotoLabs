@@ -8,9 +8,9 @@ import useApplicationData from 'hooks/useApplicationData';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   //Brings in state and functions that change state
-  const {state, setModal, exitModal, setSelect, addFavorite, removeFavorite}= useApplicationData();
+  const {state, setModal, exitModal, setSelect, addFavorite, removeFavorite, setTopic}= useApplicationData();
   //Destruction of state object to access each state
-  const {modal, select, favorite, photos, topics} = state
+  const {modal, select, favorite, photoData, topicData, topic} = state
 
   // console.log(state)
   // console.log(setModal)
@@ -25,8 +25,10 @@ const App = () => {
       favorite={favorite}
       addFavorite={addFavorite}
       removeFavorite={removeFavorite}
-      photos={photos}
-      topics={topics}
+      photos={photoData}
+      topics={topicData}
+      setTopic={setTopic}
+      topic={topic}
       />
       {modal && <PhotoDetailsModal 
       exitModal={exitModal}
