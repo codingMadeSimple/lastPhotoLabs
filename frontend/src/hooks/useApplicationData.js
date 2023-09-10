@@ -1,6 +1,6 @@
-import { useState, useReducer } from "react";
-
-
+import { useState, useReducer, useEffect } from "react";
+import photos from "mocks/photos";
+import topics from "mocks/topics";
 
 export const ACTIONS = {
 
@@ -13,6 +13,7 @@ export const ACTIONS = {
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL'
 };
+
 
 function reducer(state, action) {
   // console.log("STATE", state, "ACTION", action);
@@ -31,11 +32,11 @@ function reducer(state, action) {
       }
       return { ...state, favorite: newArray };
 
-    case ACTIONS.SET_PHOTO_DATA:
-      return {state};
+    // case ACTIONS.SET_PHOTO_DATA:
+    //   return {state};
 
-    case ACTIONS.SET_TOPIC_DATA:
-      return {state};
+    // case ACTIONS.SET_TOPIC_DATA:
+    //   return {state};
 
     case ACTIONS.SELECT_PHOTO:
       return { ...state, select: action.payload.select };
@@ -62,7 +63,9 @@ function reducer(state, action) {
     const [state, dispatch] = useReducer(reducer, {
       modal: false,
       select: null,
-      favorite: []
+      favorite: [],
+      photos, 
+      topics
     });
 
     // console.log(state);
@@ -86,28 +89,6 @@ function reducer(state, action) {
     const exitModal = () => {
       dispatch({ type: ACTIONS.CLOSE_MODAL });
     };
-
-
-
-
-
-    //Modal state
-    // const [modal, setModal] = useState(false);
-    //Selecting a photo state
-    // const [select, setSelect] = useState(null);
-    //Setting a favorite 
-    // const [favorite, addFavorite] = useState([]);
-    //Exits modal
-    // const exitModal = () => {
-    //   setModal(false);
-    // };
-
-    //Object of states
-    // const state = {
-    //   modal,
-    //   select,
-    //   favorite
-    // };
 
     return (
       //Outputs the state object and the functions to change the states
