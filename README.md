@@ -17,6 +17,8 @@ Install dependencies with `npm install` in each respective `/frontend` and `/bac
 
 !["If A topic has been selected only the photos that share that topic will appear on the screen."](https://github.com/codingMadeSimple/lastPhotoLabs/blob/master/docs/SelectedTopicPhotos.png?raw=true)
 
+!["The profile view of images."](https://github.com/codingMadeSimple/lastPhotoLabs/blob/master/docs/ProfileView.png?raw=true)
+
 ## [Frontend] Running Webpack Development Server
 
 ```sh
