@@ -14,6 +14,7 @@ const TopNavigation = (props) => {
       setTopic={props.setTopic}
       />
       <FavBadge 
+      //FavBadge, used ternary to check if there is anything in the favorite state array 
       isFavPhotoExist={props.favorite.length > 0 ? true : false} 
       />
     </div>
@@ -22,4 +23,3 @@ const TopNavigation = (props) => {
 
 export default TopNavigation;
 
-//FavBadge, used ternary to check if there is anything in the favorite state array 

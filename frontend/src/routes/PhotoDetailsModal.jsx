@@ -8,9 +8,10 @@ import PhotoFavButton from 'components/PhotoFavButton';
 const PhotoDetailsModal = (props) => {
   //The modal selected photo id
   const photo = props.select[0];
-  console.log("Photodetailmodoal", props);
-  //This will make the data from similar phots which is an object of objects and format it so that it can be used again with the PhotoList component
+
+  //This will make the data from similar photos which is an object of objects and format it so that it can be used again with the PhotoList component
   const photos = Object.values(props.select[0].similar_photos);
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button">

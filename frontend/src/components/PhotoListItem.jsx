@@ -3,10 +3,6 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-
-
-
-
 const PhotoListItem = (props) => {
 
   const handleClick = () => {

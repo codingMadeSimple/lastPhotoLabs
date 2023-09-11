@@ -5,8 +5,8 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
 
+  //Checks if the favorite already exists and either removes or adds it depending on if it exists already
   const handleClick = () => {
-    //Checks if the favorite already exists and either removes or adds it depending on if it exists already
     if (!props.favorite.includes(props.photo.id)) {
       props.addFavorite(props.photo.id);
     } else {
