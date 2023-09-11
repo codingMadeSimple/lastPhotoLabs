@@ -38,11 +38,9 @@ function reducer(state, action) {
     case ACTIONS.SELECT_PHOTO:
       return { ...state, select: action.payload.select };
 
+      //Not sure if I will need this
     // case ACTIONS.DISPLAY_PHOTO_DETAILS:
     //   return {state};
-
-    case ACTIONS.GET_PHOTOS_BY_TOPIC:
-      return { ...state, topic: action.payload.id };
 
     case ACTIONS.OPEN_MODAL:
       return { ...state, modal: true };
@@ -58,7 +56,6 @@ function reducer(state, action) {
 }
 
 
-
 export default function useApplicationData() {
 
   //Initial states
@@ -68,7 +65,6 @@ export default function useApplicationData() {
     favorite: [],
     photoData: [],
     topicData: [],
-    topic: null
   });
 
   const addFavorite = (id) => {
@@ -91,12 +87,13 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
+  //API for fetching and showing photos with a specific topic
   const setTopic = (topic_id) => {
     return fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
       .then(res => res.json())
       .then((data) => {
         console.log(data);
-        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data });
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
       }).catch((error) => {
         console.error("Error while fetching the topic ID data:", error);
       });
@@ -118,12 +115,6 @@ export default function useApplicationData() {
         console.error("Error while fetching the topic data:", error);
       });
   }, []);
-  //API route for fetching photos with a specific topic
-  // useEffect(() => {
-  //   fetch('http://localhost:8001/api/topics/photos/:topic_id')
-  //     .then(res => res.json())
-  //     .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
-  // }, []);
 
   return (
     //Outputs the state object and the functions to change the state

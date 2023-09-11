@@ -1,13 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
 
-
   const handleClick = () => {
-    //Checks if the favorite already exists and either removes or adds it depending
+    //Checks if the favorite already exists and either removes or adds it depending on if it exists already
     if (!props.favorite.includes(props.photo.id)) {
       props.addFavorite(props.photo.id);
     } else {
