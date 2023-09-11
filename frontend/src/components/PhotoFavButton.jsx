@@ -8,10 +8,12 @@ function PhotoFavButton(props) {
 
   const handleClick = () => {
 
-    if (!props.favorite.includes(props.id)) {
-      props.addFavorite(props.id);
+    console.log(props.photo.id)
+
+    if (!props.favorite.includes(props.photo.id)) {
+      props.addFavorite(props.photo.id);
     } else {
-      props.removeFavorite(props.id);
+      props.removeFavorite(props.photo.id);
     }
 
   };
@@ -19,7 +21,7 @@ function PhotoFavButton(props) {
   return (
     <div onClick={handleClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={props.favorite.includes(props.id)} />
+        <FavIcon selected={props.favorite.includes(props.photo.id)} />
       </div>
     </div>
   );
