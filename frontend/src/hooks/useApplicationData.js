@@ -1,9 +1,6 @@
 import { useState, useReducer, useEffect } from "react";
-import photos from "mocks/photos";
-import topics from "mocks/topics";
 
 export const ACTIONS = {
-
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
@@ -14,7 +11,6 @@ export const ACTIONS = {
   CLOSE_MODAL: 'CLOSE_MODAL',
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC'
 };
-
 
 function reducer(state, action) {
   // console.log("STATE", state, "ACTION", action);
@@ -54,7 +50,6 @@ function reducer(state, action) {
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false };
 
-
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -66,6 +61,7 @@ function reducer(state, action) {
 
 export default function useApplicationData() {
 
+  //Initial states
   const [state, dispatch] = useReducer(reducer, {
     modal: false,
     select: null,
@@ -74,8 +70,6 @@ export default function useApplicationData() {
     topicData: [],
     topic: null
   });
-
-  // console.log(state);
 
   const addFavorite = (id) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: id } });
@@ -99,14 +93,14 @@ export default function useApplicationData() {
 
   const setTopic = (topic_id) => {
     return fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
-    .then(res=>res.json())
-    .then((data)=>{
-      console.log(data)
-      dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data });
-  }).catch((error) => {
-    console.error("Error while fetching the topic ID data:", error);
-  });
-};
+      .then(res => res.json())
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data });
+      }).catch((error) => {
+        console.error("Error while fetching the topic ID data:", error);
+      });
+  };
 
   //API route for fetching photos from database
   useEffect(() => {
@@ -122,8 +116,7 @@ export default function useApplicationData() {
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
       .catch((error) => {
         console.error("Error while fetching the topic data:", error);
-      })
-      
+      });
   }, []);
   //API route for fetching photos with a specific topic
   // useEffect(() => {
@@ -133,7 +126,7 @@ export default function useApplicationData() {
   // }, []);
 
   return (
-    //Outputs the state object and the functions to change the states
+    //Outputs the state object and the functions to change the state
     {
       state,
       addFavorite,

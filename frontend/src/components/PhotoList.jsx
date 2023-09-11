@@ -6,9 +6,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
 
-  // console.log(props)
-  // const showTopicPhotos = props.setTopic(props.topic)
-
+  //This will pass in all of the information that is needed for the next component
   const PhotoArray = props.photos.map((photo) => {
     return <PhotoListItem
       key={photo.id}
@@ -26,6 +24,7 @@ const PhotoList = (props) => {
       setModal={props.setModal}
       select ={props.select} 
       setSelect={props.setSelect}
+      //Passed in photo for referencing state
       photo={photo}
     />;
   });

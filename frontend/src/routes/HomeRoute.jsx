@@ -1,15 +1,9 @@
 import React from 'react';
-
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-import { useState } from 'react';
-
-
 const HomeRoute = (props) => {
-
-  // console.log(props)
 
   return (
     <div className="home-route">

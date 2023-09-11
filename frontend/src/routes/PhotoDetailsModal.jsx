@@ -13,15 +13,24 @@ const PhotoDetailsModal = (props) => {
   //This will make the data from similar phots which is an object of objects and format it so that it can be used again with the PhotoList component
   const photos = Object.values(props.select[0].similar_photos);
 
-
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" onClick={props.exitModal} />
       </button>
-      <PhotoFavButton id={id} favorite={props.favorite} addFavorite={props.addFavorite} removeFavorite={props.removeFavorite} />
+      <PhotoFavButton
+        id={id}
+        favorite={props.favorite}
+        addFavorite={props.addFavorite}
+        removeFavorite={props.removeFavorite}
+      />
       <img className="photo-details-modal__image" src={props.select[0].urls.full} />
-      <PhotoList photos={photos} favorite={props.favorite} addFavorite={props.addFavorite} removeFavorite={props.removeFavorite} />
+      <PhotoList
+        photos={photos}
+        favorite={props.favorite}
+        addFavorite={props.addFavorite}
+        removeFavorite={props.removeFavorite}
+      />
     </div>
   );
 };
