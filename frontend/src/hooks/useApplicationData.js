@@ -9,7 +9,8 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
-  GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC'
+  SHOW_FAVORITE: 'SHOW_FAVORITE',
+  EXIT_FAVORITE_MODAL: 'EXIT_FAVORITE_MODAL'
 };
 
 function reducer(state, action) {
@@ -38,7 +39,7 @@ function reducer(state, action) {
     case ACTIONS.SELECT_PHOTO:
       return { ...state, select: action.payload.select };
 
-      //Not sure if I will need this
+    //Not sure if I will need this
     // case ACTIONS.DISPLAY_PHOTO_DETAILS:
     //   return {state};
 
@@ -47,6 +48,12 @@ function reducer(state, action) {
 
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false };
+
+    case ACTIONS.SHOW_FAVORITE:
+      return { ...state, favoriteModal: true };
+
+    case ACTIONS.EXIT_FAVORITE_MODAL:
+      return { ...state, favoriteModal: false };
 
     default:
       throw new Error(
@@ -65,6 +72,7 @@ export default function useApplicationData() {
     favorite: [],
     photoData: [],
     topicData: [],
+    favoriteModal: false
   });
 
   const addFavorite = (id) => {
@@ -87,12 +95,19 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
+  const showFavorites = () => {
+    dispatch({type: ACTIONS.SHOW_FAVORITE})
+  };
+
+  const exitFavoritesModal=()=>{
+    dispatch({type: ACTIONS.EXIT_FAVORITE_MODAL})
+  }
+
   //API for fetching and showing photos with a specific topic
   const setTopic = (topic_id) => {
     return fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
       .then(res => res.json())
       .then((data) => {
-        console.log(data);
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
       }).catch((error) => {
         console.error("Error while fetching the topic ID data:", error);
@@ -125,7 +140,9 @@ export default function useApplicationData() {
       setModal,
       exitModal,
       setSelect,
-      setTopic
+      setTopic,
+      showFavorites,
+      exitFavoritesModal
     }
   );
 }

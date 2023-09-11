@@ -11,6 +11,7 @@ const HomeRoute = (props) => {
       topics={props.topics} 
       favorite={props.favorite}
       setTopic={props.setTopic}
+      showFavorites={props.showFavorites}
       />
       <PhotoList 
       photos={props.photos} 

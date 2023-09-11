@@ -7,9 +7,11 @@ function PhotoFavButton(props) {
 
   //Checks if the favorite already exists and either removes or adds it depending on if it exists already
   const handleClick = () => {
-    if (!props.favorite.includes(props.photo.id)) {
+    if (!props.favorite.includes(props.photo)) {
+      props.addFavorite(props.photo);
       props.addFavorite(props.photo.id);
     } else {
+      props.removeFavorite(props.photo);
       props.removeFavorite(props.photo.id);
     }
   };

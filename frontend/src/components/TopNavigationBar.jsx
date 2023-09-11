@@ -9,6 +9,7 @@ const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
+      <div className="top-nav-bar-favorite" onClick={props.showFavorites}>Favorite Photos</div>
       <TopicList 
       topics={props.topics} 
       setTopic={props.setTopic}
